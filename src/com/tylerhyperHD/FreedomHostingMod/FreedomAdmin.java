@@ -15,10 +15,25 @@
  */
 package com.tylerhyperHD.FreedomHostingMod;
 
-/**
- *
- * @author tyler
- */
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+
 public class FreedomAdmin {
+    
+    private static FileConfiguration configuration;
+    
+    public FreedomAdmin() {
+        FreedomHostingMod.plugin.config = configuration;
+    }
+    
+    public static boolean isOwner(Player player) {
+        if(player.getName().contains(configuration.getString("server_owners"))) {
+            F_Log.info("Owner joined the game, config is correct.");
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     
 }

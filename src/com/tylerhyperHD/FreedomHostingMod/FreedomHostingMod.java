@@ -29,7 +29,7 @@ public class FreedomHostingMod extends JavaPlugin {
     
     public static FreedomHostingMod plugin;
     File configFile;
-    FileConfiguration config;
+    public FileConfiguration config;
     FileConfiguration groups;
     FileConfiguration history;
     
