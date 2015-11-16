@@ -15,11 +15,13 @@
  */
 package com.tylerhyperHD.FreedomHostingMod;
 
+import com.tylerhyperHD.FreedomHostingMod.Listeners.Freedom_PlayerListen;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -50,6 +52,7 @@ public class FreedomHostingMod extends JavaPlugin {
         loadYamls();
         F_Log.info("FreedomHostingMod by tylerhyperHD");
         F_Log.info("Made for " + config.getString("server_name") + ", an all-op server.");
+        Bukkit.getServer().getPluginManager().registerEvents(new Freedom_PlayerListen(), plugin);
     }
     
     private void firstRun() throws Exception {

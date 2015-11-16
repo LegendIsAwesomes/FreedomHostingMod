@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 
 public class FreedomAdmin {    
     public static boolean isOwner(Player player) {
-        if(player.getName().contains(FreedomHostingMod.config.getString("server_owners"))) {
+        if(player.getName().contains(FreedomHostingMod.config.getStringList("server_owners").toString())) {
             return true;
         }
         else {
