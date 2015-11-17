@@ -17,19 +17,21 @@ package com.tylerhyperHD.FreedomHostingMod;
 
 import java.util.logging.Logger;
 
+@SuppressWarnings("LoggerStringConcat")
 public class F_Log {
     
     public static final Logger log = Logger.getLogger("Minecraft");
+    public static String logprefix = "[FreedomHostingMod] ";
     
     public static void info(String args) {
-        log.info(args);
+        log.info(logprefix + args);
     }
     
     public static void severe(String args) {
-        log.severe(args);
+        log.severe(logprefix + args);
     }
 
     static void severe(Exception ex) {
-        log.severe(ex.toString());
+        log.severe(logprefix + ex.toString());
     }
 }

@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,6 +35,7 @@ public class FreedomHostingMod extends JavaPlugin {
     public static FileConfiguration config;
     FileConfiguration groups;
     FileConfiguration history;
+    public static List<String> ownernames;
     
     @Override
     public void onLoad() {
@@ -50,6 +52,7 @@ public class FreedomHostingMod extends JavaPlugin {
         }
         config = new YamlConfiguration();
         loadYamls();
+        ownernames = this.getConfig().getStringList("server_owners");
         F_Log.info("FreedomHostingMod by tylerhyperHD");
         F_Log.info("Made for " + config.getString("server_name") + ", an all-op server.");
         Bukkit.getServer().getPluginManager().registerEvents(new Freedom_PlayerListen(), plugin);
