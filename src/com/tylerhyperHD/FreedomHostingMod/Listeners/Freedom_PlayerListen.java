@@ -15,6 +15,7 @@
  */
 package com.tylerhyperHD.FreedomHostingMod.Listeners;
 
+import com.tylerhyperHD.FreedomHostingMod.F_Debug;
 import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomAdmin;
 import org.bukkit.entity.Player;
@@ -30,7 +31,9 @@ public class Freedom_PlayerListen implements Listener {
         Player player = event.getPlayer();
         
         if (FreedomAdmin.isOwner(player)) {
-            F_Log.info("Owner joined the game, config is correct.");
+            if (F_Debug.isDebugOn()) {
+                F_Log.info("Owner joined the game");
+            }
             // Commented out due to testing with another server
             // Bukkit.broadcastMessage(player.getName + " is the Owner of " + FreedomHostingMod.config.getString("server_name"));
         }

@@ -44,6 +44,8 @@ public class FreedomHostingMod extends JavaPlugin {
     
     @Override
     public void onEnable() {
+        long l = System.currentTimeMillis();
+        final int startup = (int) l;
         configFile = new File(getDataFolder(), "config.yml");
         try {
             firstRun();
@@ -55,7 +57,17 @@ public class FreedomHostingMod extends JavaPlugin {
         ownernames = this.getConfig().getStringList("server_owners");
         F_Log.info("FreedomHostingMod by tylerhyperHD");
         F_Log.info("Made for " + config.getString("server_name") + ", an all-op server.");
+        
+        if (F_Debug.isDebugOn()) {
+            F_Log.info("Starting up listeners...");
+        }
         Bukkit.getServer().getPluginManager().registerEvents(new Freedom_PlayerListen(), plugin);
+        if (F_Debug.isDebugOn()) {
+            F_Log.info("Calculating time taken to start...");
+        }
+        long y = System.currentTimeMillis();
+        final int finish = (startup - (int) y) / 1000;
+        F_Log.info("Startup finished in " + finish + " seconds");
     }
     
     private void firstRun() throws Exception {

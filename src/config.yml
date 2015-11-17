@@ -4,6 +4,9 @@
 #
 
 server_name: ImmaFreedom
+
+
 server_owners:
     - GrannyMary48
 
+server_debug: true
