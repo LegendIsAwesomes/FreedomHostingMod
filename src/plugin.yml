@@ -3,3 +3,11 @@ main: com.tylerhyperHD.FreedomHostingMod.FreedomHostingMod
 version: 1.0
 description: A mod with a new eye for freedom.
 authors: [tylerhyperHD]
+
+commands:
+   fhm:
+      description: Main command for FHM
+      usage: /<command> [player]
+   purple:
+      description: Grace the world with purple
+      usage: /<command>

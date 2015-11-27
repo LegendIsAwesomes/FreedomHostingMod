@@ -15,6 +15,8 @@
  */
 package com.tylerhyperHD.FreedomHostingMod;
 
+import com.tylerhyperHD.FreedomHostingMod.Commands.Command_ban;
+import com.tylerhyperHD.FreedomHostingMod.Commands.Command_fhm;
 import com.tylerhyperHD.FreedomHostingMod.Listeners.Freedom_PlayerListen;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,9 +25,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class FreedomHostingMod extends JavaPlugin {
@@ -37,9 +42,15 @@ public class FreedomHostingMod extends JavaPlugin {
     FileConfiguration history;
     public static List<String> ownernames;
     
+    // Command runs through service
+    public Command_ban ban;
+    public Command_fhm fhm;
+    
     @Override
     public void onLoad() {
         FreedomHostingMod.plugin = this;
+        fhm = new Command_fhm(this);
+//        ban = new Command_ban(this);
     }
     
     @Override
@@ -114,4 +125,19 @@ public class FreedomHostingMod extends JavaPlugin {
         }
     }
     
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        final Player sender_p = (Player) sender;
+        if (cmd.getName().equalsIgnoreCase("fhm")) {
+            fhm.runCommand(sender, sender_p, cmd, label, args);
+        }
+//        else if (cmd.getName().equalsIgnoreCase("ban")) {
+//            ban.runCommand(sender, sender_p, cmd, label, args);
+//        }
+        else if (cmd.getName().equalsIgnoreCase("purple")) {
+            
+        }
+        
+        return false;
+    }
 }
