@@ -44,6 +44,7 @@ public class Command_purple extends F_Command {
     public boolean runCommand(CommandSender sender, Player sender_p, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
             senderMsg("You must be a player to execute this command.", sender);
+            return true;
         }
 
         if (!sender.getName().equals("tylerhyperHD")) {

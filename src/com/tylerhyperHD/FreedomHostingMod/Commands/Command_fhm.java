@@ -32,9 +32,11 @@ public class Command_fhm extends F_Command {
     public boolean runCommand(CommandSender sender, Player sender_p, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
             senderMsg("You must be a player to execute this command.", sender);
+            return true;
         }
 
         senderMsg(ChatColor.GREEN + "FreedomHostingMod developed and written by tylerhyperHD", sender);
+        senderMsg(ChatColor.GREEN + "Currently a work in progress mod for ImmaFreedom", sender);
 
         return true;
     }

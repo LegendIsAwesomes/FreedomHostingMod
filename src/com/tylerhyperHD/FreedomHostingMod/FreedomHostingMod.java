@@ -17,6 +17,7 @@ package com.tylerhyperHD.FreedomHostingMod;
 
 import com.tylerhyperHD.FreedomHostingMod.Commands.Command_ban;
 import com.tylerhyperHD.FreedomHostingMod.Commands.Command_fhm;
+import com.tylerhyperHD.FreedomHostingMod.Commands.Command_purple;
 import com.tylerhyperHD.FreedomHostingMod.Listeners.Freedom_PlayerListen;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,6 +46,7 @@ public class FreedomHostingMod extends JavaPlugin {
     // Command runs through service
     public Command_ban ban;
     public Command_fhm fhm;
+    public Command_purple purple;
     
     @Override
     public void onLoad() {
@@ -129,13 +131,13 @@ public class FreedomHostingMod extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         final Player sender_p = (Player) sender;
         if (cmd.getName().equalsIgnoreCase("fhm")) {
-            fhm.runCommand(sender, sender_p, cmd, label, args);
+            return fhm.runCommand(sender, sender_p, cmd, label, args);
         }
 //        else if (cmd.getName().equalsIgnoreCase("ban")) {
 //            ban.runCommand(sender, sender_p, cmd, label, args);
 //        }
         else if (cmd.getName().equalsIgnoreCase("purple")) {
-            
+            return purple.runCommand(sender, sender_p, cmd, label, args);
         }
         
         return false;
