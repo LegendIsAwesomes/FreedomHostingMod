@@ -15,28 +15,36 @@
  */
 package com.tylerhyperHD.FreedomHostingMod.Commands;
 
+import com.tylerhyperHD.FreedomHostingMod.F_Debug;
+import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomHostingMod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Command_fhm extends F_Command {
+public class Command_fhm extends C_Command implements CommandExecutor {
 
-    public FreedomHostingMod plugin;
+    private final FreedomHostingMod plugin;
 
     public Command_fhm(FreedomHostingMod plugin) {
         this.plugin = plugin;
     }
 
-    public boolean runCommand(CommandSender sender, Player sender_p, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String string, String[] args) {
+            if (!(sender instanceof Player)) {
             senderMsg("You must be a player to execute this command.", sender);
             return true;
         }
+        
+        if (F_Debug.isDebugOn()) {
+            F_Log.info("Server ran command successfully");
+        }
 
         senderMsg(ChatColor.GREEN + "FreedomHostingMod developed and written by tylerhyperHD", sender);
-        senderMsg(ChatColor.GREEN + "Currently a work in progress mod for ImmaFreedom", sender);
+        senderMsg(ChatColor.GREEN + "Currently a work in progress mod for " + FreedomHostingMod.config.getString("server_name"), sender);
 
         return true;
     }

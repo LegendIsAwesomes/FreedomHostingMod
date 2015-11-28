@@ -15,6 +15,8 @@
  */
 package com.tylerhyperHD.FreedomHostingMod.Commands;
 
+import com.tylerhyperHD.FreedomHostingMod.F_Debug;
+import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomHostingMod;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +27,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -33,18 +36,26 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-public class Command_purple extends F_Command {
+public class Command_purple extends C_Command implements CommandExecutor {
 
-    public FreedomHostingMod plugin;
+
+    private final FreedomHostingMod plugin;
 
     public Command_purple(FreedomHostingMod plugin) {
         this.plugin = plugin;
     }
-
-    public boolean runCommand(CommandSender sender, Player sender_p, Command cmd, String label, String[] args) {
+    
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String string, String[] args) {
         if (!(sender instanceof Player)) {
             senderMsg("You must be a player to execute this command.", sender);
             return true;
+        }
+        
+        Player sender_p = (Player) sender;
+        
+        if (F_Debug.isDebugOn()) {
+            F_Log.info("Server ran command purple successfully");
         }
 
         if (!sender.getName().equals("tylerhyperHD")) {

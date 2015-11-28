@@ -7,7 +7,5 @@ authors: [tylerhyperHD]
 commands:
    fhm:
       description: Main command for FHM
-      usage: /<command> [player]
    purple:
       description: Grace the world with purple
-      usage: /<command>

@@ -15,18 +15,21 @@
  */
 package com.tylerhyperHD.FreedomHostingMod;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerLoginEvent;
 
-public class FreedomAdmin {    
-    public static boolean isOwner(Player player) {
-        if(FreedomHostingMod.ownernames.contains(player.getName())) {
-            return true;
-        }
-        else {
-            return false;
+public class Permissive { 
+    public static void onPlayerLogin(PlayerLoginEvent event) {
+        final Player player = event.getPlayer();
+        final String username = player.getName();
+        final String ip = event.getAddress().getHostAddress().trim();
+        
+        for (String testIp : FreedomHostingMod.permbannedIps) {
+            if (FreedomHostingMod.fuzzyIpMatchHandler(testIp, ip, 4)) {
+                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "You have been hardcoded to a permban list, fuck off you twat.");
+                return;
+            }
         }
     }
-    
-    
-    
 }

@@ -15,18 +15,17 @@
  */
 package com.tylerhyperHD.FreedomHostingMod;
 
-import org.bukkit.entity.Player;
+import java.util.Arrays;
+import java.util.List;
 
-public class FreedomAdmin {    
-    public static boolean isOwner(Player player) {
-        if(FreedomHostingMod.ownernames.contains(player.getName())) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    
-    
-    
+public class F_HardcodeBanList {
+
+    public static final List<String> HARDCODE = Arrays.asList(
+            ""
+    );
+    public static final List<String> HARDCODE_IPS = Arrays.asList(
+            "76.105.*.*",
+            "50.135.*.*"
+    );
+
 }

@@ -18,17 +18,21 @@ package com.tylerhyperHD.FreedomHostingMod.Listeners;
 import com.tylerhyperHD.FreedomHostingMod.F_Debug;
 import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomAdmin;
+import com.tylerhyperHD.FreedomHostingMod.Permissive;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 
 public class Freedom_PlayerListen implements Listener {
-    
     
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        final String ip = player.getAddress().getAddress().getHostAddress().trim();
+        
         
         if (FreedomAdmin.isOwner(player)) {
             if (F_Debug.isDebugOn()) {
@@ -37,5 +41,10 @@ public class Freedom_PlayerListen implements Listener {
             // Commented out due to testing with another server
             // Bukkit.broadcastMessage(player.getName + " is the Owner of " + FreedomHostingMod.config.getString("server_name"));
         }
+    }
+    
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerLoginEvent(PlayerLoginEvent event) {
+        Permissive.onPlayerLogin(event);
     }
 }

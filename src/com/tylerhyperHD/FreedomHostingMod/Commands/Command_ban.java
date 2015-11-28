@@ -15,21 +15,27 @@
  */
 package com.tylerhyperHD.FreedomHostingMod.Commands;
 
+import com.tylerhyperHD.FreedomHostingMod.F_Debug;
+import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomHostingMod;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
-public class Command_ban extends F_Command {
+public class Command_ban extends C_Command implements CommandExecutor {
 
-    public FreedomHostingMod plugin;
+    private final FreedomHostingMod plugin;
 
     public Command_ban(FreedomHostingMod plugin) {
         this.plugin = plugin;
     }
 
-    public boolean runCommand(CommandSender sender, Player sender_p, Command cmd, String label, String[] args) {
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) {
         
+        if (F_Debug.isDebugOn()) {
+            F_Log.info("Server ran command successfully");
+        }
         
         
         return true;
