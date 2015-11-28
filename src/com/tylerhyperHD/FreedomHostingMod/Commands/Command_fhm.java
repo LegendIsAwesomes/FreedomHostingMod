@@ -43,7 +43,7 @@ public class Command_fhm extends C_Command implements CommandExecutor {
             F_Log.info("Server ran command successfully");
         }
 
-        senderMsg(ChatColor.GREEN + "FreedomHostingMod developed and written by tylerhyperHD", sender);
+        senderMsg(ChatColor.GREEN + "FreedomHostingMod developed and written by tylerhyperHD and AndySixx", sender);
         senderMsg(ChatColor.GREEN + "Currently a work in progress mod for " + FreedomHostingMod.config.getString("server_name"), sender);
 
         return true;
