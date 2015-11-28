@@ -18,36 +18,36 @@ package com.tylerhyperHD.FreedomHostingMod.Commands;
 import com.tylerhyperHD.FreedomHostingMod.F_Debug;
 import com.tylerhyperHD.FreedomHostingMod.F_Log;
 import com.tylerhyperHD.FreedomHostingMod.FreedomHostingMod;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
+import static org.bukkit.Bukkit.getPlayer;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Command_fhm extends C_Command implements CommandExecutor {
 
+public class Command_survival extends C_Command implements CommandExecutor {
+    
     private final FreedomHostingMod plugin;
 
-    public Command_fhm(FreedomHostingMod plugin) {
+    public Command_survival(FreedomHostingMod plugin) {
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String string, String[] args) {
-            if (!(sender instanceof Player)) {
-            senderMsg("You must be a player to execute this command.", sender);
-            return true;
-        }
+    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) {
+        final Player player = getPlayer(args[0]);
         
         if (F_Debug.isDebugOn()) {
             F_Log.info("Server ran command successfully");
         }
-
-        senderMsg(ChatColor.GREEN + "FreedomHostingMod developed and written by tylerhyperHD", sender);
-        senderMsg(ChatColor.GREEN + "Currently a work in progress mod for " + FreedomHostingMod.config.getString("server_name"), sender);
-
+        Bukkit.broadcastMessage(ChatColor.AQUA + sender.getName() + "has changed his gamemode to survival.");
+        player.setGameMode(GameMode.SURVIVAL);
+    
+    
+    
         return true;
-        
-        
     }
 }
