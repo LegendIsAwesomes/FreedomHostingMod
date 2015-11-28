@@ -9,3 +9,7 @@ commands:
       description: Main command for FHM
    purple:
       description: Grace the world with purple
+   smite:
+       description: Smite a player down.
+   opall:
+       description: Op every current online player.

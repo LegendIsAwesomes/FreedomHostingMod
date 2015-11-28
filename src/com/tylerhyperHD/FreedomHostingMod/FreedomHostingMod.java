@@ -17,7 +17,9 @@ package com.tylerhyperHD.FreedomHostingMod;
 
 import com.tylerhyperHD.FreedomHostingMod.Commands.Command_ban;
 import com.tylerhyperHD.FreedomHostingMod.Commands.Command_fhm;
+import com.tylerhyperHD.FreedomHostingMod.Commands.Command_opall;
 import com.tylerhyperHD.FreedomHostingMod.Commands.Command_purple;
+import com.tylerhyperHD.FreedomHostingMod.Commands.Command_smite;
 import static com.tylerhyperHD.FreedomHostingMod.F_HardcodeBanList.HARDCODE;
 import static com.tylerhyperHD.FreedomHostingMod.F_HardcodeBanList.HARDCODE_IPS;
 import com.tylerhyperHD.FreedomHostingMod.Listeners.Freedom_PlayerListen;
@@ -170,5 +172,7 @@ public class FreedomHostingMod extends JavaPlugin {
         //this.getCommand("ban").setExecutor(new Command_ban(this));
         this.getCommand("fhm").setExecutor(new Command_fhm(this));
         this.getCommand("purple").setExecutor(new Command_purple(this));
+        this.getCommand("smite").setExecutor(new Command_smite(this));
+        this.getCommand("opall").setExecutor(new Command_opall(this));
     }
 }
